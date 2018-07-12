@@ -1,0 +1,37 @@
+<div class="w-form">
+    <form id="formSearchSociete" [formGroup]="searchSocieteForm" class="w-clearfix">
+        <div [ngClass]="{'has-error':!searchSocieteForm.controls['dept'].valid}">
+            <label id="labelDept" class="ins-label" for="dept">Département</label>
+            <div>
+                <select formControlName="dept" id="dept" name="dept" class="ins-form w-input">
+                    <option value="" selected>Toute la France.</option>
+                    <option *ngFor="let dept of listDept" [value]="dept.value"> 
+                        {{dept.value}} - {{dept.display}}
+                    </option>
+                </select>
+            </div>
+            <div *ngIf="alertSociete.length > 0" class="alert">
+                {{alertSociete}}
+            </div>
+        </div>
+
+        <div id="search-component">
+            <label style="vertical-align: top" class="ins-label" id="labelSoc">Entreprise</label>
+            <!--div-->
+                <input type="text" class="ins-form w-input" maxlength="256" formControlName="societe" id="societe0" required="true" autocomplete="off" placeholder="Votre Raison Sociale ou SIRET"  (keydown.ArrowDown)="onKeyArrow($event, 'societe', 0, true)"/>
+                <!--[focus]="myFocusTriggeringEventEmitter"-->
+                <ng-progress [minimum]="0.30" [maximum]="0.95"
+                     [speed]="10" [showSpinner]="false" [direction]="'leftToRightIncreased'"
+                     [color]="'#ff6600'" [trickleSpeed]="300" [thick]="false">
+                </ng-progress>
+                <ul id="listSociete" class="ui-menu searchList" tabindex="0" [ngStyle]="{'width': '95%', 'position' : 'relative', 'display': societesDisp && societesDisp.length > 0 ? 'block' : 'none'}">
+                    <li class="ui-menu-item" *ngFor="let societe of societesDisp; let in=index">                 
+                         <div id="societe{{in+1}}" tabindex="{{in+1}}" class="ui-menu-item-wrapper" (click)="assignASociete(societe)" (keyup.enter)="assignASociete(societe)" (keydown.ArrowDown)="onKeyArrow($event, 'societe', in+1, true)" (keydown.ArrowUp)="onKeyArrow($event, 'societe', in+1, false)">
+                     {{societe.ENSEIGNE + ' - ' + societe.ADDR}}
+                        </div>
+                    </li>
+                </ul>
+            <!--/div-->
+        </div>
+    </form>
+</div>

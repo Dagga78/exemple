@@ -1,0 +1,89 @@
+	<div class="logo-cobiz-down"><img src="assets/images/logo-black.svg"></div>
+	<div class="header header-ins w-clearfix">
+		<a class="header-logo-box w-inline-block w-clearfix">
+			<img src="assets/images/logo_obs3-p-500.png" sizes="(max-width: 479px) 90px, 110px" class="logo-obs-top">
+		</a>
+		<div class="navtop-box w-clearfix">
+			<nav>
+				<a href="mailto:cobiz.bonjour@orange.com?subject=Demande%20via%20plateforme%20Cobiz" class="navtop-link navtop-link-black">Contact</a>
+			</nav>
+		</div>
+	</div>
+<div class="ins-bg">
+	<div class="ins-center w-clearfix">
+	  <div class="ins-left">
+	    <div class="ins-left-content">
+
+	        <div id='inscription-first' [hidden]="showDiv != 1">
+				<h3 class="ins-titre">Inscrivez-vous sur Cobiz<br> en 2 minutes</h3>
+		        <div *ngIf="errorServer" class="text-mdp-instructions" style="color: red;background-color: #ffffff;">
+		            {{errorServer}}
+		        </div>
+				<div class="w-form">
+					<form id="inscription-form" name="inscription-form" data-name="InscriptionForm" (ngSubmit)="onSubmit()" #inscriptionForm="ngForm" ngNativeValidate>
+						<label for="pr-nom" class="ins-label">Pr&eacute;nom</label>
+						<input type="text" class="ins-form w-input" maxlength="256" name="pr-nom" data-name="prénom" placeholder="Votre prénom" id="pr-nom" required="" [(ngModel)]="inscription.firstname">
+						<label for="nom" class="ins-label">Nom</label>
+						<input type="text" class="ins-form w-input" maxlength="256" name="nom" data-name="nom" placeholder="Votre nom" id="nom" required="" [(ngModel)]="inscription.lastname">
+						<label for="email" class="ins-label">E-mail professionnel</label>
+						<input type="email" class="ins-form w-input" maxlength="256" name="email" data-name="email" placeholder="Votre adresse e-mail" id="email" required="" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" [(ngModel)]="inscription.email" (change)="changeEmail()">
+						<div class="checkbox-field w-checkbox">
+						  	<input type="checkbox" id="Checkbox-cgu" name="Checkbox-cgu" data-name="Checkbox-cgu" required="" class="checkbox w-checkbox-input">
+						  	<label for="Checkbox-cgu" class="checkbox-label w-form-label">J&#x27;accepte les <a href="#" class="link">CGU</a></label>
+						</div>
+						<div class="ins-btn-content w-clearfix">
+							<input type="submit" value="Continuer" data-wait="..." class="ins-btn w-button"><!-- [ngClass]="enableValid ? '' : 'disabledbutton'"-->
+						</div>
+					</form>
+				</div>
+	        </div>
+
+	        <div id='inscription-pwd' [hidden]="showDiv != 2">
+				<h3 class="ins-titre"><strong>Cr&eacute;ez votre mot de passe</strong><br></h3>
+				<div class="text-mdp-instructions">Votre mot de passe doit comporter au moins 8 lettres, une majuscule et un chiffre. </div>
+		        <div *ngIf="errorServer" class="text-mdp-instructions" style="color: red;background-color: #ffffff;">
+		            {{errorServer}}
+		        </div>
+				<div class="w-form">
+					<form id="pwdForm" name="Pwd-form" data-name="pwdForm" (ngSubmit)="onSubmit()" [formGroup]="pwdForm" ngNativeValidate>
+						<label for="pwd" class="ins-label">Mot de passe</label>
+						<input type="password" class="ins-form w-input" maxlength="256" minlength="8" name="pwd" data-name="Name 4" placeholder="Saisissez votre mot de passe" id="pwd" required pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,})" formControlName="password" [formGroup]="pwdForm">
+						<label for="confirmPwd" class="ins-label">Confirmation du mot de passe</label>
+						<input type="password" class="ins-form w-input" maxlength="256" minlength="8" name="confirmPwd" data-name="confirmPwd" placeholder="Confirmez votre mot de passe" id="confirmPwd" required formControlName="confirmPwd" [formGroup]="pwdForm" #pwConfirm>
+						<!-- Gestion confirm passwd -->
+						<div *ngIf="pwdForm.controls.confirmPwd.errors?.mismatch">{{pwConfirm.setCustomValidity('Ce mot de passe est different !')}}</div>
+						<div *ngIf="!pwdForm.controls.confirmPwd.errors">{{pwConfirm.setCustomValidity('')}}</div>
+
+					  <div class="checkbox-field w-checkbox">
+					  	<input type="checkbox" id="checkbox-2" name="checkbox-2" data-name="Checkbox 2" class="checkbox w-checkbox-input" required>
+					  	<label for="checkbox-2" class="checkbox-label w-form-label">Je ne suis pas un robot<a href="#" class="link"></a></label>
+					  </div>
+					  <div class="ins-btn-content w-clearfix">
+					  	<div (click)="onGoBack()"><a class="link-2">Retour</a></div>
+					  	<input type="submit" value="Continuer" data-wait="Please wait..." class="ins-btn ins-btn-able w-button" [disabled]="bInscrit">
+					  </div>
+					</form>
+				</div>
+	        </div>
+
+	        <div id='inscription-last' [hidden]="showDiv != 3">
+				<h3 class="ins-titre"><strong>Vous y êtes presque</strong><br></h3>
+				<div class="bloc-alerte-ins-mail"><img src="assets/images/btn-mail3.png" class="img-ins-email">
+					<div class="txt-ins-email">
+						Un e-mail de confirmation vous a été envoyé à<br><strong class="bold-text">{{inscription.email}}</strong>
+					</div>
+				</div>
+				<div (click)="reSendMail()" style="cursor: pointer; text-decoration: underline;">
+					<a class="ins-email-pas-de-mail">Je n&#x27;ai pas reçu d&#x27;e-mail</a>
+				</div>
+	        </div>
+
+	        <div id='inscription-confirm' [hidden]="showDiv != 4">
+				<h3 class="ins-titre"><strong>Voila c'est confirmé !</strong></h3>
+	        </div>
+	        
+	    </div>
+	  </div>
+	  <div class="ins-right"><img src="assets/images/Group-6.png" class="img-right"></div>
+	</div>
+</div>

@@ -1,0 +1,32 @@
+<div class="ins-bg">
+	<div class="ins-header w-clearfix"><img src="assets/images/logo-full-A-Copy.svg" class="logo-ins">
+	  <div class="ins-nav-top w-clearfix">
+	  	<nav>
+	  	<a href="#" class="navtop-link navtop-link-black">FAQ</a>
+	  	<a routerLink="pwd" routerLinkActive="active" class="navtop-link navtop-link-black">Contact</a>
+	  	</nav>
+	  </div>
+	</div>
+	<div class="ins-center w-clearfix">
+	  <div class="ins-left">
+	    <div class="ins-left-content">
+			<h3 class="ins-titre">Login</h3>
+	        <div *ngIf="errorServer" class="text-mdp-instructions" style="color: red;background-color: #ffffff;">
+	            {{errorServer}}
+	        </div>
+			<div class="w-form">
+				<form id="login-form" name="login-form" data-name="LoginForm" (ngSubmit)="onSubmit()" #loginForm="ngForm" ngNativeValidate>
+					<label for="email" class="ins-label">E-mail</label>
+					<input type="email" class="ins-form w-input" maxlength="256" name="email" data-name="email" placeholder="Entrez votre adresse e-mail" id="email" required="" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" [(ngModel)]="login.email">
+					<label for="pwd" class="ins-label">Mot de passe</label>
+					<input type="password" class="ins-form w-input" maxlength="256" minlength="8" name="pwd" data-name="Name 4" placeholder="Entrez votre mot de passe" id="pwd" required pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,})" [(ngModel)]="login.password" >
+					<div class="ins-btn-content w-clearfix">
+						<input type="submit" value="Continuer" data-wait="..." class="ins-btn w-button">
+					</div>
+				</form>
+			</div>
+	    </div>
+	  </div>
+	  <div class="ins-right"><img src="assets/images/Group-6.png" class="img-right"></div>
+	</div>
+</div>

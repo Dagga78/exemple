@@ -1,0 +1,132 @@
+<div class="header header-ins w-clearfix">
+  <a class="header-logo-box w-inline-block w-clearfix">
+    <img src="assets/images/logo_obs3.png"
+      srcset="assets/images/logo_obs3-p-500.png 500w, assets/images/logo_obs3.png 568w"
+      sizes="(max-width: 479px) 90px, 110px" class="logo-obs-top">
+  </a>
+  <div class="navtop-box w-clearfix">
+    <a href="mailto:cobiz.bonjour@orange.com?subject=Demande%20via%20plateforme%20Cobiz" class="navtop-link">Contact</a>
+  </div>
+</div>
+
+<div class="bg-compl-flexbox" [ngClass]="show == 2 ? 'bg-compl-block' : ''">
+  <div class="logo-cobiz-down">
+    <img src="assets/images/logo-black.svg">
+  </div>
+  <div class="modal-compl-esn w-clearfix">
+    <div class="compl-arianne-box">
+      <a href="#" class="compl-arianne-link {{show == 1 ? 'compl-arianne-link-actif' :''}}">1. Mon entreprise</a>
+      <a href="#" class="compl-arianne-link {{show == 2 ? 'compl-arianne-link-actif' :''}}">2. Ma page entreprise</a>
+      <a href="#" class="compl-arianne-link {{show == 3 ? 'compl-arianne-link-actif' :''}}">3. Mon profil
+        professionnel</a>
+    </div>
+
+    <div [hidden]="show != 1">
+      <div class="compl-title">Sélectionnez votre entreprise</div>
+      <div class="comp-sel-ent w-clearfix">
+        <div class="comp-sel-ent-left">
+          <searchSociete-cmp (errorEvent)="receptError($event)" (okEvent)="receptSociete($event)"></searchSociete-cmp>
+          <div class="checkbox-field w-checkbox">
+            <input type="checkbox" id="checkBoxProfil1" name="checkBoxProfil1" data-name="checkBoxProfil1" required=""
+              class="checkbox w-checkbox-input" [(ngModel)]="checkBoxProfil1" (change)="changeCB()">
+            <label for="Checkbox-cgu" class="checkbox-label w-form-label">Je certifie être le représentant officiel de
+              cette entreprise et disposer du droit d’agir en son compte pour créer cette page.
+            </label>
+          </div>
+        </div>
+        <div class="compl-sel-ent-right info-ent-overide">
+          <div class="sel-ent-info-box w-clearfix">
+            <div class="sel-ent-info-txt sel-ent-info-txt-name" style="display:block;visibility:hidden;"
+              [ngStyle]="{'visibility': ( societe.ENSEIGNE && societe.ENSEIGNE != '' ? 'visible' : 'hidden')}">
+              {{societe.ENSEIGNE}}
+            </div>
+            <div class="sel-ent-info-txt"><span class="comp-info-txt-bold">SIRET&nbsp;:&nbsp;</span>{{societe.SIRET}}
+            </div>
+            <div class="sel-ent-info-txt"><span class="comp-info-txt-bold">Date de création&nbsp;:&nbsp;</span>{{societe.DATE_CREATION
+              | date: 'd MMMM y'}}
+            </div>
+            <div class="sel-ent-info-txt"><span class="comp-info-txt-bold">Effectif&nbsp;:&nbsp;</span>{{societe.EFFECTIF}}
+            </div>
+            <div class="sel-ent-info-txt"><span class="comp-info-txt-bold">Adresse&nbsp;:&nbsp;</span>{{societe.ADDR}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="compl-cta-box w-clearfix">
+        <a (click)="onValidate(1)" class="btn btn-comp-right"
+          [ngClass]="enableValid1 ? '' : 'disabledbutton'">Valider</a>
+      </div>
+    </div>
+
+    <div [hidden]="show != 2">
+      <div class="compl-title">Complétez votre profil entreprise</div>
+      <div class="comp-sel-ent compl-sel-ent-normal w-clearfix">
+        <div class="add-picture-box add-picture-box-logo">
+          <div class="add-avatar-block add-avatar-block-logo">
+            <div class="add-logo-txt-img">Logo</div>
+          </div>
+          <a href="#" class="btn btn-photo-small">Ajouter mon logo</a></div>
+        <div class="form-block w-form">
+          <form id="email-form" name="email-form" data-name="Email Form" class="w-clearfix"><label for="nom-4"
+            class="ins-label">Activité</label><select id="field-3" name="field-3" data-name="Field 3"
+            class="ins-form-select w-select">
+            <option *ngFor="let activite of listActivite" value="">{{activite.value}}</option>
+          </select><label for="nom-4" class="ins-label">Vos compétences</label>
+            <div class="form-competences"><input type="text" class="ins-form w-input" maxlength="256" name="nom-2"
+              data-name="Nom 2" placeholder="Ex : Création de site internet" id="nom-2" required="">
+              <a href="#" class="btn-box-comptence w-inline-block w-clearfix">
+                <div class="txt-competence">Site internet</div>
+                <img src="https://uploads-ssl.webflow.com/5b0fcd925f4fe250dd7c1ca2/5b23d5dc9f4ffbfcce96d04f_Shape.svg"
+                  class="cross-comp"></a>
+              <a href="#" class="btn-box-comptence w-inline-block w-clearfix">
+                <div class="txt-competence">Cablage</div>
+                <img src="https://uploads-ssl.webflow.com/5b0fcd925f4fe250dd7c1ca2/5b23d5dc9f4ffbfcce96d04f_Shape.svg"
+                  class="cross-comp"></a>
+              <a href="#" class="btn-box-comptence w-inline-block w-clearfix">
+                <div class="txt-competence">Sécurité</div>
+                <img src="https://uploads-ssl.webflow.com/5b0fcd925f4fe250dd7c1ca2/5b23d5dc9f4ffbfcce96d04f_Shape.svg"
+                  class="cross-comp"></a>
+              <a href="#" class="btn-box-comptence w-inline-block w-clearfix">
+                <div class="txt-competence">Cloud</div>
+                <img src="https://uploads-ssl.webflow.com/5b0fcd925f4fe250dd7c1ca2/5b23d5dc9f4ffbfcce96d04f_Shape.svg"
+                  class="cross-comp"></a>
+              <div class="small-txt-comp-numero small-txt-comp-competences">Vous pouvez encore ajouter 13 compétences
+              </div>
+            </div>
+            <label for="nom-4" class="ins-label">Votre territoire commercial</label>
+            <div class="form-competences"><input type="text" class="ins-form w-input" maxlength="256" name="nom-2"
+              data-name="Nom 2" placeholder="Ex : 67 - Bas Rhin" id="nom-2" required="">
+              <a href="#" class="btn-box-comptence w-inline-block w-clearfix">
+                <div class="txt-competence">67 - Strasbourg</div>
+                <img src="https://uploads-ssl.webflow.com/5b0fcd925f4fe250dd7c1ca2/5b23d5dc9f4ffbfcce96d04f_Shape.svg"
+                  class="cross-comp"></a>
+              <div class="box-ou">
+                <div class="dep-filet"></div>
+                <div class="dep-filet-ou">Ou</div>
+                <div class="dep-filet"></div>
+              </div>
+              <div class="w-checkbox"><input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox"
+                class="w-checkbox-input"><label for="checkbox" class="checkbox-label-3 w-form-label">Toute
+                la France</label></div>
+            </div>
+            <label for="nom-4" class="ins-label">Présentation de votre entreprise</label><textarea id="field-5"
+              name="field-5"
+              placeholder="Prenez le temps de présenter votre savoir faire et ce qui caractérise et différencie votre société"
+              maxlength="5000" class="textarea-comp-esn w-input"></textarea><label for="pr-nom-4" class="ins-label">Site
+              internet</label><input type="text" class="ins-form w-input" maxlength="256" name="nom-2" data-name="Nom 2"
+              placeholder="www.votresite.fr" id="nom-2" required=""></form>
+          <div class="w-form-done">
+            <div>Thank you! Your submission has been received!</div>
+          </div>
+          <div class="w-form-fail">
+            <div>Oops! Something went wrong while submitting the form.</div>
+          </div>
+        </div>
+      </div>
+      <div class="compl-cta-box w-clearfix">
+        <a (click)="onValidate(2)" class="btn btn-comp-right"
+          [ngClass]="enableValid2 ? '' : 'disabledbutton'">Valider</a>
+      </div>
+
+  </div>
+</div>

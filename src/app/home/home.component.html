@@ -1,0 +1,123 @@
+  <div class="logo-obs-fixed w-clearfix">
+    <div class="text-block-25">avec</div>
+    <div class="logo-obs-txt-made-with-love">Made with ❤️at</div>
+    <img src="assets/images/logo_obs3.png" srcset="assets/images/logo_obs3-p-500.png 500w, assets/images/logo_obs3.png 568w" sizes="(max-width: 479px) 90px, 110px" class="logo-obs-top">
+  </div>
+  <div class="header header-blue w-clearfix">
+    <a class="header-logo-box w-inline-block w-clearfix">
+    <img src="assets/images/logo-white.svg" class="logo-cobiz-img">
+    </a>
+    <div class="navtop-box w-clearfix">
+      <a href="#" class="navtop-link navtop-link-white">Accueil</a>
+      <a routerLink="/inscription" routerLinkActive="active" class="navtop-link navtop-link-white">Mon espace</a>
+      <div class="top-avatar-box" (click)="showTopMenu=!showTopMenu">
+        <img src="assets/images/ava.png" class="avatar-top" data-ix="avatar-top-menu">
+        <div class="avatar-modal-box" [ngStyle]="{'display': showTopMenu ? 'block' : 'none'}" style="opacity:1; transition:opacity 200 ease 1">
+          <!--a routerLink="/inscription" routerLinkActive="active" class="nav-top-avatar">Accueil</a>
+          <a routerLink="/login" routerLinkActive="active"  class="nav-top-avatar">Mon espace</a>
+          <a routerLink="/profil" routerLinkActive="active"  class="nav-top-avatar">Mon compte</a-->
+          <a routerLink="/inscription" routerLinkActive="active" class="nav-top-avatar">Inscription</a>
+          <a routerLink="/login" routerLinkActive="active"  class="nav-top-avatar">Login</a>
+          <a routerLink="/profil" routerLinkActive="active"  class="nav-top-avatar">Profil</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="top-home-obs w-clearfix">
+    <div class="top-home-obs-content">
+      <div class="top-home-title">Je trouve un partenaire</div>
+      <div class="top-home-subtitle">Pour enrichir mon offre</div>
+      <div class="cobizi-obs-box">
+        <div class="row w-row">
+          <div class="w-col w-col-3">
+            <a href="#" class="cobizi-small-box w-inline-block" data-ix="arrow-top-modal">
+              <div class="cobizi-titre">Créer un site internet<br>‍</div>
+              <div class="cobizi-tag-top">Flexible engine</div><img src="https://uploads-ssl.webflow.com/5b0fcd925f4fe250dd7c1ca2/5b0fe5b26249252ddaa9dd08_Shape.svg" class="arrow-top"></a>
+          </div>
+          <div class="w-col w-col-3">
+            <a href="#" class="cobizi-small-box w-inline-block" data-ix="arrow-top-modal">
+              <div class="cobizi-titre">Sauvegarder les données NAS</div>
+              <div class="cobizi-tag-top">Flexible engine</div><img src="https://uploads-ssl.webflow.com/5b0fcd925f4fe250dd7c1ca2/5b0fe5b26249252ddaa9dd08_Shape.svg" class="arrow-top"></a>
+          </div>
+          <div class="w-col w-col-3">
+            <a href="#" class="cobizi-small-box w-inline-block" data-ix="arrow-top-modal">
+              <div class="cobizi-titre">Migrer ma messagerie sur le cloud</div>
+              <div class="cobizi-tag-top">Teaming</div><img src="https://uploads-ssl.webflow.com/5b0fcd925f4fe250dd7c1ca2/5b0fe5b26249252ddaa9dd08_Shape.svg" class="arrow-top"></a>
+          </div>
+          <div class="w-col w-col-3">
+            <a href="#" class="cobizi-small-box cobizi-small-box-autre w-inline-block" data-ix="arrow-top-modal">
+              <div class="cobizi-titre cobizi-titre-white">Autre besoin client<br>‍</div>
+              <div class="cobizi-tag-top">Autres produits obs</div><img src="https://uploads-ssl.webflow.com/5b0fcd925f4fe250dd7c1ca2/5b0fe5b26249252ddaa9dd08_Shape.svg" class="arrow-top"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="partenaires">
+    <div class="partenaires-content w-clearfix">
+      <div class="text-block-8">Vos partenaires potentiels </div>
+      <div class="row-2 w-row">
+        <div class="noo w-col w-col-3">
+          <div class="modal-partenaire w-clearfix"><img src="assets/images/Group-35.png" class="image-3">
+            <div class="text-block-5"><strong>Jean-Luc Richard</strong><br></div>
+            <div class="text-block-6">La couleur du zèbre (67)</div>
+            <div class="text-block-7">Webagency</div>
+          </div>
+        </div>
+        <div class="w-col w-col-3">
+          <div class="modal-partenaire w-clearfix"><img src="assets/images/Group-34.png" class="image-3">
+            <div class="text-block-5"><strong>Cédric Grillotti</strong><br></div>
+            <div class="text-block-6">Aria Conseil (51)</div>
+            <div class="text-block-7">Intégrateur</div>
+          </div>
+        </div>
+        <div class="w-col w-col-3">
+          <div class="modal-partenaire w-clearfix"><img src="assets/images/Group-33.png" class="image-3">
+            <div class="text-block-5">Sophie Lefevre</div>
+            <div class="text-block-6">Cadoles (21)</div>
+            <div class="text-block-7">dév. applications</div>
+          </div>
+        </div>
+        <div class="w-col w-col-3">
+          <div class="modal-partenaire modale2">
+            <div class="text-block-9">+</div><a href="#" class="btn btn-green-home">Inviter un partenaire</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="home-projets-box">
+    <div class="home-projet-empty w-clearfix">
+      <div class="text-block-8">Vos projets de collaboration</div>
+      <div class="module-left module-left-center"><img src="https://uploads-ssl.webflow.com/5b0fcd925f4fe250dd7c1ca2/5b0feeb65f4fe2a4d87c3740_icon-emotion-sad.svg" class="image-4">
+        <div class="text-block-10">Vous n&#x27;avez aucune collaboration en cours</div><a href="#" class="btn">Trouver un partenaire</a></div>
+    </div>
+    <div class="home-projet-empty w-clearfix">
+      <div class="text-block-8">Projets en cours</div>
+      <div class="projet-num">3</div>
+      <div class="module-left w-clearfix">
+        <div class="projet-row w-clearfix">
+          <div class="projet-row-left w-clearfix">
+            <div class="text-block-15">Flomic</div>
+            <div class="text-block-16">Migration d’un VPN</div>
+            <div class="text-block-17">Déployement de 35 serveurs dans une PME</div>
+          </div>
+        </div>
+        <div class="projet-row w-clearfix">
+          <div class="projet-row-left w-clearfix">
+            <div class="text-block-15">Flomic</div>
+            <div class="text-block-16">Migration d’un VPN</div>
+            <div class="text-block-17">Déployement de 35 serveurs dans une PME</div>
+          </div>
+        </div>
+        <div class="projet-row w-clearfix">
+          <div class="projet-row-left w-clearfix">
+            <div class="text-block-15">Flomic</div>
+            <div class="text-block-16">Migration d’un VPN</div>
+            <div class="text-block-17">Déployement de 35 serveurs dans une PME</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer" data-ix="made-with-love-appear"></div>
